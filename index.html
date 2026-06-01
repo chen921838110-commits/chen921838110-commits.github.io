@@ -1,978 +1,1928 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>陈姗姗 Shanelle - 个人简历</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        .page {
-            display: none;
-            min-height: 100vh;
-            padding: 20px;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .page.active {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .home-page {
-            text-align: center;
-            color: white;
-        }
-
-        .profile-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 24px;
-            padding: 50px 40px;
-            max-width: 500px;
-            width: 100%;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            color: #333;
-        }
-
-        .avatar-container {
-            position: relative;
-            margin-bottom: 25px;
-        }
-
-        .avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 60px;
-            color: white;
-            border: 5px solid #f0f2ff;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-        }
-
-        .name-section h1 {
-            font-size: 32px;
-            margin-bottom: 8px;
-            color: #333;
-        }
-
-        .name-section .english-name {
-            font-size: 18px;
-            color: #667eea;
-            font-weight: 500;
-            margin-bottom: 15px;
-        }
-
-        .title-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 30px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            font-size: 14px;
-            color: #555;
-        }
-
-        .contact-item i {
-            color: #667eea;
-            width: 20px;
-        }
-
-        .nav-menu {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
-
-        .nav-btn {
-            background: #f8f9fa;
-            border: 2px solid transparent;
-            border-radius: 16px;
-            padding: 20px 15px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .nav-btn:hover {
-            background: white;
-            border-color: #667eea;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
-        }
-
-        .nav-btn i {
-            font-size: 28px;
-            color: #667eea;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .nav-btn span {
-            font-size: 14px;
-            color: #333;
-            font-weight: 500;
-        }
-
-        .content-page {
-            width: 100%;
-            max-width: 900px;
-        }
-
-        .page-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 30px;
-            color: white;
-        }
-
-        .page-header h2 {
-            font-size: 28px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .page-header h2 i {
-            font-size: 24px;
-        }
-
-        .back-btn {
-            background: rgba(255,255,255,0.2);
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .back-btn:hover {
-            background: rgba(255,255,255,0.3);
-        }
-
-        .content-card {
-            background: white;
-            border-radius: 20px;
-            padding: 35px;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
-        }
-
-        .edu-item {
-            display: flex;
-            gap: 20px;
-            padding: 25px 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .edu-item:last-child {
-            border-bottom: none;
-        }
-
-        .edu-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            flex-shrink: 0;
-        }
-
-        .edu-content h3 {
-            font-size: 18px;
-            color: #333;
-            margin-bottom: 5px;
-        }
-
-        .edu-content .school-tag {
-            display: inline-block;
-            background: #f0f2ff;
-            color: #667eea;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            margin-bottom: 8px;
-        }
-
-        .edu-content p {
-            color: #666;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .exp-item {
-            padding: 25px 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .exp-item:last-child {
-            border-bottom: none;
-        }
-
-        .exp-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .exp-title-section {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .exp-icon {
-            width: 45px;
-            height: 45px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 18px;
-        }
-
-        .exp-title-section h3 {
-            font-size: 17px;
-            color: #333;
-        }
-
-        .exp-title-section .company {
-            color: #667eea;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .exp-date {
-            color: #888;
-            font-size: 13px;
-            background: #f8f9fa;
-            padding: 5px 12px;
-            border-radius: 15px;
-        }
-
-        .exp-desc {
-            padding-left: 57px;
-        }
-
-        .exp-desc li {
-            color: #555;
-            font-size: 14px;
-            line-height: 1.8;
-            margin-bottom: 8px;
-            list-style: none;
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .exp-desc li::before {
-            content: "▸";
-            position: absolute;
-            left: 0;
-            color: #667eea;
-            font-weight: bold;
-        }
-
-        .award-item {
-            display: flex;
-            gap: 15px;
-            padding: 20px 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .award-item:last-child {
-            border-bottom: none;
-        }
-
-        .award-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-
-        .award-content h3 {
-            font-size: 16px;
-            color: #333;
-            margin-bottom: 5px;
-        }
-
-        .award-content .award-level {
-            color: #f5576c;
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        .award-content p {
-            color: #666;
-            font-size: 13px;
-            margin-top: 8px;
-            line-height: 1.5;
-        }
-
-        .campus-item {
-            padding: 20px 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .campus-item:last-child {
-            border-bottom: none;
-        }
-
-        .campus-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-
-        .campus-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .campus-title i {
-            color: #667eea;
-            font-size: 18px;
-        }
-
-        .campus-title h3 {
-            font-size: 16px;
-            color: #333;
-        }
-
-        .campus-date {
-            color: #888;
-            font-size: 12px;
-        }
-
-        .campus-desc li {
-            color: #555;
-            font-size: 13px;
-            line-height: 1.7;
-            margin-bottom: 6px;
-            list-style: none;
-            padding-left: 28px;
-            position: relative;
-        }
-
-        .campus-desc li::before {
-            content: "•";
-            position: absolute;
-            left: 15px;
-            color: #667eea;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-        }
-
-        .skill-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 15px 20px;
-            background: #f8f9fa;
-            border-radius: 12px;
-            transition: all 0.3s;
-        }
-
-        .skill-item:hover {
-            background: #f0f2ff;
-            transform: translateX(5px);
-        }
-
-        .skill-item i {
-            font-size: 22px;
-            color: #667eea;
-            width: 30px;
-            text-align: center;
-        }
-
-        .skill-item span {
-            font-size: 14px;
-            color: #333;
-            font-weight: 500;
-        }
-
-        .hobbies-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .hobby-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 20px;
-            background: linear-gradient(135deg, #f8f9fa 0%, #f0f2ff 100%);
-            border-radius: 15px;
-            transition: all 0.3s;
-        }
-
-        .hobby-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.15);
-        }
-
-        .hobby-icon {
-            width: 50px;
-            height: 50px;
-            background: white;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .hobby-info h4 {
-            font-size: 15px;
-            color: #333;
-            margin-bottom: 3px;
-        }
-
-        .hobby-info p {
-            font-size: 12px;
-            color: #888;
-        }
-
-        .honors-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 12px;
-        }
-
-        .honor-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 15px 20px;
-            background: #f8f9fa;
-            border-radius: 10px;
-        }
-
-        .honor-item i {
-            color: #f5576c;
-            font-size: 18px;
-        }
-
-        .honor-item span {
-            font-size: 14px;
-            color: #333;
-        }
-
-        @media (max-width: 600px) {
-            .profile-card {
-                padding: 30px 20px;
-            }
-
-            .nav-menu {
-                grid-template-columns: 1fr;
-            }
-
-            .page-header h2 {
-                font-size: 20px;
-            }
-
-            .content-card {
-                padding: 20px;
-            }
-
-            .exp-header {
-                flex-direction: column;
-            }
-
-            .exp-desc {
-                padding-left: 0;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>陈姗姗 | Shanelle Chen - 个人作品集</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ========== CSS Custom Properties ========== */
+:root {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-card: #1a1a1a;
+  --bg-card-hover: #222222;
+  --text-primary: #f0f0f0;
+  --text-secondary: #a0a0a0;
+  --text-muted: #666666;
+  --accent-purple: #8b5cf6;
+  --accent-purple-light: #a78bfa;
+  --accent-purple-dark: #6d28d9;
+  --accent-gradient: linear-gradient(135deg, #8b5cf6, #c084fc, #e879f9);
+  --accent-gradient-2: linear-gradient(135deg, #6d28d9, #8b5cf6);
+  --border-color: rgba(139, 92, 246, 0.15);
+  --border-color-strong: rgba(139, 92, 246, 0.3);
+  --card-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  --card-shadow-hover: 0 8px 40px rgba(139, 92, 246, 0.15);
+  --nav-height: 70px;
+  --section-padding: 100px 0;
+  --container-width: 1200px;
+  --font-serif: 'Noto Serif SC', 'Georgia', serif;
+  --font-sans: 'Noto Sans SC', 'Helvetica Neue', Arial, sans-serif;
+  --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ========== Reset & Base ========== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-smooth);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ========== Animations ========== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(139, 92, 246, 0.6); }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease forwards;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.8s ease forwards;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.8s ease forwards;
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+
+/* ========== Scroll Reveal ========== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal-left.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal-right.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal-scale.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ========== Navigation ========== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-height);
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 1000;
+  transition: var(--transition-smooth);
+}
+
+.nav-container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 32px;
+}
+
+.nav-links a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  position: relative;
+  padding: 8px 0;
+  transition: var(--transition-smooth);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-gradient);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--text-primary);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+.nav-mobile-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.nav-mobile-toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--text-primary);
+  transition: var(--transition-smooth);
+}
+
+/* ========== Hero Section ========== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: var(--nav-height);
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(192, 132, 252, 0.1) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
+  animation: pulse 8s ease-in-out infinite;
+}
+
+.hero-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.5;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 900px;
+  padding: 0 24px;
+}
+
+.hero-label {
+  display: inline-block;
+  font-size: 0.85rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent-purple-light);
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards 0.2s;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  margin-bottom: 16px;
+  line-height: 1.2;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards 0.4s;
+}
+
+.hero-title .highlight {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards 0.6s;
+}
+
+.hero-photo {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid transparent;
+  background: linear-gradient(var(--bg-primary), var(--bg-primary)) padding-box,
+              var(--accent-gradient) border-box;
+  box-shadow: 0 0 60px rgba(139, 92, 246, 0.3);
+  animation: glow 3s ease-in-out infinite, fadeInUp 0.8s ease forwards 0.3s;
+  opacity: 0;
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards 0.8s;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: var(--transition-smooth);
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--accent-gradient);
+  color: white;
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(139, 92, 246, 0.5);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color-strong);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent-purple);
+  background: rgba(139, 92, 246, 0.1);
+  transform: translateY(-3px);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards 1.2s;
+}
+
+.hero-scroll::before {
+  content: '';
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--accent-purple), transparent);
+  animation: float 2s ease-in-out infinite;
+}
+
+/* ========== Section Common Styles ========== */
+.section {
+  padding: var(--section-padding);
+  position: relative;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-label {
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent-purple-light);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.section-title span {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-divider {
+  width: 60px;
+  height: 3px;
+  background: var(--accent-gradient);
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+/* ========== About Section ========== */
+.about {
+  background: var(--bg-secondary);
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-text {
+  font-size: 1.1rem;
+  line-height: 2;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+}
+
+.about-text .highlight {
+  color: var(--accent-purple-light);
+  font-weight: 500;
+}
+
+/* ========== Education Section ========== */
+.edu-timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.edu-timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--accent-purple), var(--accent-purple-dark));
+}
+
+.edu-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.edu-item:nth-child(odd) {
+  flex-direction: row-reverse;
+}
+
+.edu-item:last-child {
+  margin-bottom: 0;
+}
+
+.edu-content {
+  width: 45%;
+  padding: 30px;
+  background: var(--bg-card);
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  transition: var(--transition-smooth);
+}
+
+.edu-content:hover {
+  transform: translateY(-5px);
+  border-color: var(--border-color-strong);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.edu-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 16px;
+  border: 2px solid var(--accent-purple);
+}
+
+.edu-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.edu-school {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.edu-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--accent-gradient);
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.edu-degree {
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.edu-date {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.edu-dot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  background: var(--accent-purple);
+  border-radius: 50%;
+  border: 3px solid var(--bg-primary);
+  box-shadow: 0 0 0 3px var(--accent-purple);
+}
+
+/* ========== Internship Section ========== */
+.internship {
+  background: var(--bg-primary);
+}
+
+.internship-map {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.internship-path {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(to bottom, 
+    var(--accent-purple) 0%, 
+    var(--accent-purple-light) 50%, 
+    var(--accent-purple-dark) 100%);
+  opacity: 0.3;
+}
+
+.internship-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 50px;
+  position: relative;
+  cursor: pointer;
+}
+
+.internship-item:nth-child(odd) {
+  flex-direction: row-reverse;
+}
+
+.internship-item:last-child {
+  margin-bottom: 0;
+}
+
+.internship-content {
+  width: 42%;
+  padding: 24px;
+  background: var(--bg-card);
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  transition: var(--transition-smooth);
+  position: relative;
+}
+
+.internship-content::before {
+  content: '';
+  position: absolute;
+  top: 30px;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+}
+
+.internship-item:nth-child(odd) .internship-content::before {
+  right: -20px;
+  border-left-color: var(--bg-card);
+}
+
+.internship-item:nth-child(even) .internship-content::before {
+  left: -20px;
+  border-right-color: var(--bg-card);
+}
+
+.internship-content:hover {
+  transform: translateY(-5px) scale(1.02);
+  border-color: var(--accent-purple);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.internship-photo {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  border: 2px solid var(--border-color);
+}
+
+.internship-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.internship-company {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.internship-role {
+  font-size: 0.9rem;
+  color: var(--accent-purple-light);
+  margin-bottom: 8px;
+}
+
+.internship-date {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.internship-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.internship-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: var(--accent-purple-light);
+  transition: var(--transition-smooth);
+}
+
+.internship-link:hover {
+  color: var(--accent-purple);
+  gap: 10px;
+}
+
+.internship-dot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background: var(--bg-card);
+  border: 3px solid var(--accent-purple);
+  border-radius: 50%;
+  z-index: 2;
+  transition: var(--transition-smooth);
+}
+
+.internship-item:hover .internship-dot {
+  background: var(--accent-purple);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+}
+
+.internship-number {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -30px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  background: var(--bg-card);
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+}
+
+/* ========== Awards Section ========== */
+.awards {
+  background: var(--bg-secondary);
+}
+
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.award-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 28px;
+  border: 1px solid var(--border-color);
+  transition: var(--transition-smooth);
+  cursor: pointer;
+}
+
+.award-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-purple);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.award-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.award-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.award-competition {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.award-badge {
+  padding: 6px 14px;
+  background: var(--accent-gradient);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.award-date {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.award-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.award-desc ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.award-desc li {
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 8px;
+}
+
+.award-desc li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  background: var(--accent-purple);
+  border-radius: 50%;
+}
+
+.award-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--accent-purple-light);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.award-toggle:hover {
+  color: var(--accent-purple);
+}
+
+.award-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.award-details.expanded {
+  max-height: 500px;
+}
+
+/* ========== Campus Section ========== */
+.campus {
+  background: var(--bg-primary);
+}
+
+.campus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.campus-card {
+  background: var(--bg-card);
+  border-radius: 20px;
+  padding: 32px;
+  border: 1px solid var(--border-color);
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.campus-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent-gradient);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.campus-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--border-color-strong);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.campus-card:hover::before {
+  transform: scaleX(1);
+}
+
+.campus-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--accent-gradient);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.campus-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.campus-role {
+  font-size: 0.9rem;
+  color: var(--accent-purple-light);
+  margin-bottom: 16px;
+}
+
+.campus-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.campus-stats {
+  display: flex;
+  gap: 24px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+.campus-stat {
+  text-align: center;
+}
+
+.campus-stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.campus-stat-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ========== Honors Section ========== */
+.honors {
+  background: var(--bg-secondary);
+}
+
+.honors-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.honor-item {
+  display: flex;
+  align-items: center;
+  padding: 20px 24px;
+  background: var(--bg-card);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  border: 1px solid var(--border-color);
+  transition: var(--transition-smooth);
+}
+
+.honor-item:hover {
+  transform: translateX(10px);
+  border-color: var(--accent-purple);
+}
+
+.honor-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--accent-gradient);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.honor-content {
+  flex: 1;
+}
+
+.honor-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.honor-detail {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.honor-year {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding: 6px 14px;
+  background: rgba(139, 92, 246, 0.1);
+  border-radius: 20px;
+}
+
+/* ========== Skills Section ========== */
+.skills {
+  background: var(--bg-primary);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.skill-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 28px;
+  border: 1px solid var(--border-color);
+  transition: var(--transition-smooth);
+  cursor: pointer;
+  text-align: center;
+}
+
+.skill-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--accent-purple);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.skill-icon {
+  width: 70px;
+  height: 70px;
+  background: var(--accent-gradient);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin: 0 auto 20px;
+  transition: var(--transition-smooth);
+}
+
+.skill-card:hover .skill-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.skill-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.skill-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.skill-hint {
+  margin-top: 16px;
+  font-size: 0.75rem;
+  color: var(--accent-purple-light);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: var(--transition-smooth);
+}
+
+.skill-card:hover .skill-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========== Contact Section ========== */
+.contact {
+  background: var(--bg-secondary);
+  padding-bottom: 60px;
+}
+
+.contact-content {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-text {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: var(--bg-card);
+  border-radius: 50px;
+  border: 1px solid var(--border-color);
+  transition: var(--transition-smooth);
+}
+
+.contact-link:hover {
+  border-color: var(--accent-purple);
+  background: rgba(139, 92, 246, 0.1);
+  transform: translateY(-3px);
+}
+
+.contact-link svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--accent-purple-light);
+}
+
+.contact-info {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ========== Footer ========== */
+.footer {
+  background: var(--bg-primary);
+  padding: 30px 0;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-text {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 10, 0.98);
+    flex-direction: column;
+    padding: 20px;
+    gap: 16px;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-mobile-toggle {
+    display: flex;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .edu-timeline::before {
+    left: 20px;
+  }
+
+  .edu-item,
+  .edu-item:nth-child(odd) {
+    flex-direction: column;
+    padding-left: 50px;
+  }
+
+  .edu-content {
+    width: 100%;
+  }
+
+  .edu-dot {
+    left: 20px;
+  }
+
+  .internship-path {
+    left: 20px;
+  }
+
+  .internship-item,
+  .internship-item:nth-child(odd) {
+    flex-direction: column;
+    padding-left: 50px;
+  }
+
+  .internship-content {
+    width: 100%;
+  }
+
+  .internship-content::before {
+    display: none;
+  }
+
+  .internship-dot {
+    left: 20px;
+  }
+
+  .internship-number {
+    left: 50px;
+    transform: none;
+  }
+
+  .awards-grid,
+  .campus-grid,
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========== Utility Classes ========== */
+.text-gradient {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.mb-0 { margin-bottom: 0; }
+.mt-20 { margin-top: 20px; }
+</style>
 </head>
 <body>
-    <div class="page home-page active" id="home">
-        <div class="profile-card">
-            <div class="avatar-container">
-                <div class="avatar">
-                    <i class="fas fa-user"></i>
-                </div>
-            </div>
-            
-            <div class="name-section">
-                <h1>陈姗姗</h1>
-                <div class="english-name">Shanelle Chen</div>
-                <div class="title-badge">2027届法律硕士 | 中共党员</div>
-            </div>
 
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>chen13176536118@163.com</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <span>131-7653-6118</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-birthday-cake"></i>
-                    <span>2003年1月</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-certificate"></i>
-                    <span>法考证 | 英语六级</span>
-                </div>
-            </div>
-
-            <div class="nav-menu">
-                <div class="nav-btn" onclick="showPage('education')">
-                    <i class="fas fa-graduation-cap"></i>
-                    <span>教育背景</span>
-                </div>
-                <div class="nav-btn" onclick="showPage('internship')">
-                    <i class="fas fa-briefcase"></i>
-                    <span>实习经历</span>
-                </div>
-                <div class="nav-btn" onclick="showPage('awards')">
-                    <i class="fas fa-trophy"></i>
-                    <span>竞赛获奖</span>
-                </div>
-                <div class="nav-btn" onclick="showPage('campus')">
-                    <i class="fas fa-university"></i>
-                    <span>校园经历</span>
-                </div>
-                <div class="nav-btn" onclick="showPage('honors')">
-                    <i class="fas fa-medal"></i>
-                    <span>个人荣誉</span>
-                </div>
-                <div class="nav-btn" onclick="showPage('skills')">
-                    <i class="fas fa-star"></i>
-                    <span>技能爱好</span>
-                </div>
-            </div>
-        </div>
+<!-- Navigation -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="#home" class="nav-logo">Shanelle</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="active">首页</a></li>
+      <li><a href="#about">关于我</a></li>
+      <li><a href="#education">教育背景</a></li>
+      <li><a href="#internship">实习经历</a></li>
+      <li><a href="#awards">竞赛获奖</a></li>
+      <li><a href="#campus">校园经历</a></li>
+      <li><a href="#honors">个人荣誉</a></li>
+      <li><a href="#skills">技能爱好</a></li>
+    </ul>
+    <div class="nav-mobile-toggle" id="mobileToggle">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
+  </div>
+</nav>
 
-    <div class="page content-page" id="education">
-        <div class="page-header">
-            <h2><i class="fas fa-graduation-cap"></i> 教育背景</h2>
-            <button class="back-btn" onclick="showPage('home')">
-                <i class="fas fa-arrow-left"></i> 返回首页
-            </button>
-        </div>
-        <div class="content-card">
-            <div class="edu-item">
-                <div class="edu-icon">
-                    <i class="fas fa-university"></i>
-                </div>
-                <div class="edu-content">
-                    <h3>中央民族大学</h3>
-                    <span class="school-tag">985高校</span>
-                    <p><strong>法律（法学）硕士</strong> | 保研第二名 | 特等奖学金前5%</p>
-                    <p style="color: #888; margin-top: 5px;">2025.09 - 2027.06</p>
-                </div>
-            </div>
-            <div class="edu-item">
-                <div class="edu-icon">
-                    <i class="fas fa-school"></i>
-                </div>
-                <div class="edu-content">
-                    <h3>华东理工大学</h3>
-                    <span class="school-tag">211高校</span>
-                    <p><strong>法学学士</strong> | 专业排名前3% (3/111)</p>
-                    <p style="color: #888; margin-top: 5px;">2021.09 - 2025.06</p>
-                </div>
-            </div>
-        </div>
+<!-- Hero Section -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-label">欢迎来到我的个人网站</div>
+    <div class="hero-photo">
+      <img src="photo.jpg" alt="陈姗姗">
     </div>
-
-    <div class="page content-page" id="internship">
-        <div class="page-header">
-            <h2><i class="fas fa-briefcase"></i> 实习经历</h2>
-            <button class="back-btn" onclick="showPage('home')">
-                <i class="fas fa-arrow-left"></i> 返回首页
-            </button>
-        </div>
-        <div class="content-card">
-            <div class="exp-item">
-                <div class="exp-header">
-                    <div class="exp-title-section">
-                        <div class="exp-icon">
-                            <i class="fas fa-gavel"></i>
-                        </div>
-                        <div>
-                            <h3>商事争议解决实习生</h3>
-                            <div class="company">北京安杰世泽律师事务所</div>
-                        </div>
-                    </div>
-                    <span class="exp-date">2024.11 - 2025.04</span>
-                </div>
-                <ul class="exp-desc">
-                    <li><strong>案件跟进管理：</strong>独立起草答辩状等法律文书30+份，参与大额商事诉讼案件，熟悉法律文书撰写及案件起诉环节</li>
-                    <li><strong>工具赋能：</strong>熟练使用ChatGPT、Claude工具辅助完成合同初步审核与中英文互译，极大提升效率；具备Vibe coding基础经验，正在尝试编写程序自动化处理批量检索与分类工作</li>
-                    <li><strong>多线程协同：</strong>同时跟进2个以上的常法咨询项目，独立负责合同初审、法律检索与文书管理，能高效完成工作</li>
-                </ul>
-            </div>
-
-            <div class="exp-item">
-                <div class="exp-header">
-                    <div class="exp-title-section">
-                        <div class="exp-icon">
-                            <i class="fas fa-balance-scale"></i>
-                        </div>
-                        <div>
-                            <h3>法律实习生</h3>
-                            <div class="company">上海宇钧律师事务所</div>
-                        </div>
-                    </div>
-                    <span class="exp-date">2024.11 - 2025.04</span>
-                </div>
-                <ul class="exp-desc">
-                    <li><strong>项目统筹：</strong>协助完成5场律协讲座及40名本科生课程设计，负责资料收集、PPT制作及内容汇总，锻炼项目统筹能力</li>
-                    <li><strong>案件管理：</strong>跟进18起诉讼案件，独立起草起诉状、证据目录等法律文书，负责接待当事人，熟悉案件起诉等环节</li>
-                    <li><strong>法律项目实践：</strong>参与"烁光好律师"网站及小程序的落地，负责该网站推广的全矩阵搭建，产出200+视频（20+爆款），客户吸引ROI达10:1</li>
-                </ul>
-            </div>
-
-            <div class="exp-item">
-                <div class="exp-header">
-                    <div class="exp-title-section">
-                        <div class="exp-icon">
-                            <i class="fas fa-newspaper"></i>
-                        </div>
-                        <div>
-                            <h3>新媒体实习生</h3>
-                            <div class="company">人民网</div>
-                        </div>
-                    </div>
-                    <span class="exp-date">2023.08 - 2023.11</span>
-                </div>
-                <ul class="exp-desc">
-                    <li><strong>新媒体运营：</strong>运营120w+粉丝的公众号，制作推送140+篇，单篇推送最高浏览量突破100w</li>
-                    <li><strong>矩阵搭建：</strong>参与搭建"食品安全"科普矩阵，制作4篇长图海报，提升了设计能力，向上沟通能力得到锻炼</li>
-                    <li><strong>数据分析：</strong>定期对推送数据（阅读量、互动率）进行统计分析，为内容策划优化提供依据</li>
-                </ul>
-            </div>
-        </div>
+    <h1 class="hero-title">
+      你好，我是<span class="highlight">陈姗姗</span>
+    </h1>
+    <p class="hero-subtitle">2027届法律硕士 | 中共党员 | 追光者</p>
+    <div class="hero-buttons">
+      <a href="#about" class="btn btn-primary">
+        <span>查看简历</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </a>
+      <a href="#contact" class="btn btn-secondary">
+        <span>联系我</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+      </a>
     </div>
+  </div>
+  <div class="hero-scroll">
+    <span>向下滚动</span>
+  </div>
+</section>
 
-    <div class="page content-page" id="awards">
-        <div class="page-header">
-            <h2><i class="fas fa-trophy"></i> 竞赛获奖</h2>
-            <button class="back-btn" onclick="showPage('home')">
-                <i class="fas fa-arrow-left"></i> 返回首页
-            </button>
-        </div>
-        <div class="content-card">
-            <div class="award-item">
-                <div class="award-icon">
-                    <i class="fas fa-globe"></i>
-                </div>
-                <div class="award-content">
-                    <h3>第十二届中国WTO模拟法庭竞赛</h3>
-                    <div class="award-level">全国二等奖、被告书状三等奖</div>
-                    <p>作为负责人，带领7人团队撰写、打磨50页英文书状，进行国际法法律检索与案例研究，统筹团队分工与进度。</p>
-                    <p style="color: #888; margin-top: 5px;">2023.09 - 2023.11</p>
-                </div>
-            </div>
-
-            <div class="award-item">
-                <div class="award-icon">
-                    <i class="fas fa-balance-scale-right"></i>
-                </div>
-                <div class="award-content">
-                    <h3>第十一届"法援杯"案例分析大赛</h3>
-                    <div class="award-level">全国二等奖</div>
-                    <p>调动知识产权法等法律知识现场询问当事人，1h快速完成法律意见书出具及展示，获得评委一致好评。</p>
-                    <p style="color: #888; margin-top: 5px;">2023.09 - 2023.11</p>
-                </div>
-            </div>
-
-            <div class="award-item">
-                <div class="award-icon">
-                    <i class="fas fa-rocket"></i>
-                </div>
-                <div class="award-content">
-                    <h3>第九届中国国际"互联网+"大学生创新创业大赛</h3>
-                    <div class="award-level">上海赛区银奖</div>
-                    <p>立足生成式人工智能，为AI绘画软件进行版权保护的研究及方案设计，提升了对新兴行业的法学认识与商业敏感度。</p>
-                    <p style="color: #888; margin-top: 5px;">2023.06 - 2023.09</p>
-                </div>
-            </div>
-
-            <div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 10px;">
-                <p style="color: #666; font-size: 14px;"><strong>其他获奖：</strong>第一届"中凯杯"上海市法科生法律职业技能大赛一等奖、最佳口才奖 | 第九届互联网+北京赛区三等奖</p>
-            </div>
-        </div>
+<!-- About Section -->
+<section class="section about" id="about">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">About Me</div>
+      <h2 class="section-title">关于<span>我</span></h2>
+      <div class="section-divider"></div>
     </div>
-
-    <div class="page content-page" id="campus">
-        <div class="page-header">
-            <h2><i class="fas fa-university"></i> 校园经历</h2>
-            <button class="back-btn" onclick="showPage('home')">
-                <i class="fas fa-arrow-left"></i> 返回首页
-            </button>
-        </div>
-        <div class="content-card">
-            <div class="campus-item">
-                <div class="campus-header">
-                    <div class="campus-title">
-                        <i class="fas fa-bullhorn"></i>
-                        <h3>记者团学生负责人 | 校团委宣传部（小花梨新媒体工作室）</h3>
-                    </div>
-                    <span class="campus-date">2023.04 - 2024.04</span>
-                </div>
-                <ul class="campus-desc">
-                    <li><strong>团队管理与统筹：</strong>带领跨部门90人团队，统筹七十周年校庆、第六届进博会等大型活动宣传工作，制定分工、协调资源、把控进度</li>
-                    <li><strong>宣传成果：</strong>参与推送370+，总浏览量突破600万，多篇推送被光明日报、央视新闻等央媒报道、转载</li>
-                    <li><strong>荣誉：</strong>在任期间，公众号斩获上海市共青团十大微信公众号，排名长期位于全国前十、上海前三，多次获国家级、市级奖项</li>
-                </ul>
-            </div>
-
-            <div class="campus-item">
-                <div class="campus-header">
-                    <div class="campus-title">
-                        <i class="fas fa-book-reader"></i>
-                        <h3>校学生法治宣传员 | 校党委学生工作部</h3>
-                    </div>
-                    <span class="campus-date">2023.04 - 2024.04</span>
-                </div>
-                <ul class="campus-desc">
-                    <li><strong>法律宣讲：</strong>针对真实法律问题，面向大学生开展宣讲，整理案例资料，撰写普法材料，锻炼了知识的转化能力</li>
-                    <li><strong>支教实践：</strong>赴内蒙古克一河（距北京约2000公里）支教20天，设计覆盖全年级小学生的普法课程，反响良好</li>
-                </ul>
-            </div>
-
-            <div class="campus-item">
-                <div class="campus-header">
-                    <div class="campus-title">
-                        <i class="fas fa-chalkboard-teacher"></i>
-                        <h3>助教 | 哈佛中美学生领袖峰会（HSYLC）</h3>
-                    </div>
-                    <span class="campus-date">2022.08 - 2023.08</span>
-                </div>
-                <ul class="campus-desc">
-                    <li>协助哈佛讲师设计模拟法庭课程（全英）</li>
-                    <li>陪伴30名高中生7天，组织每日活动与大型汇演排演，建立深度信任关系</li>
-                </ul>
-            </div>
-
-            <div class="campus-item">
-                <div class="campus-header">
-                    <div class="campus-title">
-                        <i class="fas fa-flask"></i>
-                        <h3>国家级大学生创新创业项目《第三者干扰婚姻关系的民事责任问题研究》 | 项目负责人</h3>
-                    </div>
-                    <span class="campus-date">2022.11 - 2024.06</span>
-                </div>
-                <ul class="campus-desc">
-                    <li>带领团队就社会热点"第三者责任"确定选题，统筹项目的整体进程，把控项目研究方向</li>
-                    <li>承担主要的沟通交涉工作，成功与多家法院、律所、当事人对接，真实了解当事人诉求及各地法官的裁判方向</li>
-                </ul>
-            </div>
-        </div>
+    <div class="about-content">
+      <div class="about-text reveal">
+        <p style="margin-bottom: 20px;">
+          从<span class="highlight">华东理工大学</span>到<span class="highlight">中央民族大学</span>，从法学本科到法律硕士，我在211到985的学术积淀中，逐步构建起对法律专业的系统认知。
+        </p>
+        <p style="margin-bottom: 20px;">
+          但让我真正成长的，是那些走出课堂、走进实践的日子。在<span class="highlight">北京安杰世泽律师事务所</span>，我深入商事争议解决的第一线；在<span class="highlight">人民网</span>，我学习法治新闻的专业表达；在<span class="highlight">哈佛峰会</span>与<span class="highlight">CTB论坛</span>，我拓展国际视野与青年领导力。
+        </p>
+        <p>
+          这些经历让我明白：<span class="highlight">一名优秀的法律人，既要有扎实的专业功底，也要有跨界融合的思维</span>。
+        </p>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="page content-page" id="honors">
-        <div class="page-header">
-            <h2><i class="fas fa-medal"></i> 个人荣誉</h2>
-            <button class="back-btn" onclick="showPage('home')">
-                <i class="fas fa-arrow-left"></i> 返回首页
-            </button>
-        </div>
-        <div class="content-card">
-            <div class="honors-list">
-                <div class="honor-item">
-                    <i class="fas fa-crown"></i>
-                    <span>国家奖学金</span>
-                </div>
-                <div class="honor-item">
-                    <i class="fas fa-award"></i>
-                    <span>上海市优秀毕业生</span>
-                </div>
-                <div class="honor-item">
-                    <i class="fas fa-user-tie"></i>
-                    <span>校优秀学生干部</span>
-                </div>
-                <div class="honor-item">
-                    <i class="fas fa-star"></i>
-                    <span>校优秀学生</span>
-                </div>
-                <div class="honor-item">
-                    <i class="fas fa-hands-helping"></i>
-                    <span>校十佳志愿者（全校共10人）</span>
-                </div>
-                <div class="honor-item">
-                    <i class="fas fa-trophy"></i>
-                    <span>特等奖学金（1次）、一等优秀奖学金（多次）</span>
-                </div>
-                <div class="honor-item">
-                    <i class="fas fa-flag"></i>
-                    <span>校优秀共青团干部（多次）</span>
-                </div>
-                <div class="honor-item">
-                    <i class="fas fa-certificate"></i>
-                    <span>社会工作奖A等（多次）</span>
-                </div>
-            </div>
-        </div>
+<!-- Education Section -->
+<section class="section education" id="education">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Education</div>
+      <h2 class="section-title">教育<span>背景</span></h2>
+      <div class="section-divider"></div>
     </div>
-
-    <div class="page content-page" id="skills">
-        <div class="page-header">
-            <h2><i class="fas fa-star"></i> 专业技能 & 爱好特长</h2>
-            <button class="back-btn" onclick="showPage('home')">
-                <i class="fas fa-arrow-left"></i> 返回首页
-            </button>
+    <div class="edu-timeline">
+      <div class="edu-item reveal-left">
+        <div class="edu-content">
+          <div class="edu-photo">
+            <img src="Huali.jpg" alt="华东理工大学">
+          </div>
+          <div class="edu-school">华东理工大学</div>
+          <span class="edu-tag">211</span>
+          <div class="edu-degree">法学学士</div>
+          <div class="edu-date">2021.09 - 2025.06</div>
         </div>
-        
-        <div class="content-card" style="margin-bottom: 20px;">
-            <h3 style="margin-bottom: 20px; color: #333;"><i class="fas fa-tools" style="color: #667eea; margin-right: 10px;"></i>专业技能</h3>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <i class="fas fa-file-alt"></i>
-                    <span>法律文书撰写</span>
-                </div>
-                <div class="skill-item">
-                    <i class="fas fa-search"></i>
-                    <span>法律检索</span>
-                </div>
-                <div class="skill-item">
-                    <i class="fas fa-file-contract"></i>
-                    <span>合同审核</span>
-                </div>
-                <div class="skill-item">
-                    <i class="fas fa-file-contract"></i>
-                    <span>知识产权法</span>
-                </div>
-                <div class="skill-item">
-                    <i class="fas fa-robot"></i>
-                    <span>AI工具应用</span>
-                </div>
-                <div class="skill-item">
-                    <i class="fas fa-share-alt"></i>
-                    <span>新媒体运营</span>
-                </div>
-                <div class="skill-item">
-                    <i class="fas fa-chart-bar"></i>
-                    <span>数据分析</span>
-                </div>
-                <div class="skill-item">
-                    <i class="fas fa-tasks"></i>
-                    <span>项目管理</span>
-                </div>
-                <div class="skill-item">
-                    <i class="fas fa-users"></i>
-                    <span>团队协作</span>
-                </div>
-            </div>
+        <div class="edu-dot"></div>
+      </div>
+      <div class="edu-item reveal-right">
+        <div class="edu-content">
+          <div class="edu-photo">
+            <img src="Minzu.jpg" alt="中央民族大学">
+          </div>
+          <div class="edu-school">中央民族大学</div>
+          <span class="edu-tag">985</span>
+          <div class="edu-degree">法律硕士</div>
+          <div class="edu-date">2025.09 - 2027.06</div>
         </div>
-
-        <div class="content-card">
-            <h3 style="margin-bottom: 20px; color: #333;"><i class="fas fa-heart" style="color: #f5576c; margin-right: 10px;"></i>爱好特长</h3>
-            <div class="hobbies-grid">
-                <div class="hobby-item">
-                    <div class="hobby-icon">🎹</div>
-                    <div class="hobby-info">
-                        <h4>电子琴</h4>
-                        <p>十级水平</p>
-                    </div>
-                </div>
-                <div class="hobby-item">
-                    <div class="hobby-icon">📷</div>
-                    <div class="hobby-info">
-                        <h4>摄影</h4>
-                        <p>摄影爱好者</p>
-                    </div>
-                </div>
-                <div class="hobby-item">
-                    <div class="hobby-icon">🤿</div>
-                    <div class="hobby-info">
-                        <h4>水肺潜水</h4>
-                        <p>AOW认证潜水员</p>
-                    </div>
-                </div>
-                <div class="hobby-item">
-                    <div class="hobby-icon">🏊</div>
-                    <div class="hobby-info">
-                        <h4>自由潜</h4>
-                        <p>AIDA一星认证</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="edu-dot"></div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <script>
-        function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-            document.getElementById(pageId).classList.add('active');
-            window.scrollTo(0, 0);
-        }
-    </script>
+<!-- Internship Section -->
+<section class="section internship" id="internship">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Internship Experience</div>
+      <h2 class="section-title">实习<span>经历</span></h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="internship-map">
+      <div class="internship-path"></div>
+      
+      <div class="internship-item reveal">
+        <div class="internship-number">01</div>
+        <div class="internship-content">
+          <div class="internship-photo">
+            <img src="Anjie.jpg" alt="北京安杰世泽律师事务所">
+          </div>
+          <div class="internship-company">北京安杰世泽律师事务所</div>
+          <div class="internship-role">商事争议解决实习生</div>
+          <div class="internship-date">2024.11 - 2025.04</div>
+          <div class="internship-desc">
+            在国内顶尖律师事务所参与商事争议解决业务，协助处理多起重大商事纠纷案件，进行法律检索、案例分析、文书起草等工作。
+          </div>
+        </div>
+        <div class="internship-dot"></div>
+      </div>
+
+      <div class="internship-item reveal">
+        <div class="internship-number">02</div>
+        <div class="internship-content">
+          <div class="internship-photo">
+            <img src="Yujun.jpg" alt="上海宇钧律师事务所">
+          </div>
+          <div class="internship-company">上海宇钧律师事务所</div>
+          <div class="internship-role">法律科技项目实习生</div>
+          <div class="internship-date">2024.06 - 2024.10</div>
+          <div class="internship-desc">
+            参与法律科技项目开发，协助搭建线上法律服务平台，深入了解法律与技术的融合应用。
+          </div>
+          <a href="https://sghls.cn/" target="_blank" class="internship-link">
+            <span>访问烁光好律师</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          </a>
+        </div>
+        <div class="internship-dot"></div>
+      </div>
+
+      <div class="internship-item reveal">
+        <div class="internship-number">03</div>
+        <div class="internship-content">
+          <div class="internship-photo">
+            <img src="Renmin.jpg" alt="人民网">
+          </div>
+          <div class="internship-company">人民网</div>
+          <div class="internship-role">法治新闻实习生</div>
+          <div class="internship-date">2024.03 - 2024.05</div>
+          <div class="internship-desc">
+            在国家级媒体平台参与法治新闻报道，学习专业的新闻写作与编辑技能，关注社会法治热点议题。
+          </div>
+        </div>
+        <div class="internship-dot"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Awards Section -->
+<section class="section awards" id="awards">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Competition Awards</div>
+      <h2 class="section-title">竞赛<span>获奖</span></h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="awards-grid">
+      
+      <div class="award-card reveal">
+        <div class="award-header">
+          <div>
+            <div class="award-title">全国二等奖、被告书状三等奖</div>
+            <div class="award-competition">第十二届中国WTO模拟法庭竞赛</div>
+          </div>
+          <span class="award-badge">2023.10-12</span>
+        </div>
+        <div class="award-desc">
+          <ul>
+            <li>作为负责人，带领团队从国际法层面关注到国家在面对不公平对待的应有作为，组织撰写、打磨50页英文书状</li>
+            <li>锻炼了对国际法相关知识的运用能力及在专业竞赛中的团队统筹能力</li>
+            <li>竞赛涉及Valoria和Mystoria两个WTO成员在人工智能领域的竞争问题及对外投资限制争议</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="award-card reveal">
+        <div class="award-header">
+          <div>
+            <div class="award-title">全国二等奖</div>
+            <div class="award-competition">第十一届"法援杯"案例分析大赛</div>
+          </div>
+          <span class="award-badge">2023.09-11</span>
+        </div>
+        <div class="award-desc">
+          <ul>
+            <li>深度运用知识产权法知识，与团队合作就"商标侵权"等问题出具法律意见书</li>
+            <li>运用物权法、侵权法等撰写法律分析与法律意见，提升了案件分析能力与文书写作水平</li>
+            <li>案例涉及光潭乳业和晨夕乳液有关"商标侵权"、"商标不正当抢注"、"注册商标侵犯他人姓名权纠纷"等问题</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="award-card reveal">
+        <div class="award-header">
+          <div>
+            <div class="award-title">上海赛区银奖</div>
+            <div class="award-competition">第九届中国国际"互联网+"创新创业大赛</div>
+          </div>
+          <span class="award-badge">2023.06-09</span>
+        </div>
+        <div class="award-desc">
+          <ul>
+            <li>着力学校理工科优势，与商学院、信息学院等同学立足"生成式人工智能"，设计AI绘画软件</li>
+            <li>助力版权保护问题的研究，帮助规范法律风险，促进"法工交叉"</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="award-card reveal">
+        <div class="award-header">
+          <div>
+            <div class="award-title">一等奖、最佳口才奖</div>
+            <div class="award-competition">第一届"中凯杯"上海市法科生法律职业技能大赛</div>
+          </div>
+          <span class="award-badge">2023.05-06</span>
+        </div>
+        <div class="award-desc">
+          <ul>
+            <li>运用民法领域相关知识，针对涉及"劳动关系"的具体纠纷案例进行法律分析</li>
+            <li>就"司法改革的回避制度"现场提出观点，在紧张环境中锻炼了储备知识的临时调动能力</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="award-card reveal">
+        <div class="award-header">
+          <div>
+            <div class="award-title">其他竞赛获奖</div>
+            <div class="award-competition">跨学科竞赛荣誉</div>
+          </div>
+        </div>
+        <div class="award-desc">
+          <ul>
+            <li>第九届中国国际"互联网+"创新创业大赛北京赛区三等奖、校二等奖</li>
+            <li>第八届中国国际"互联网+"大学生创新创业大赛校一等奖</li>
+            <li>第十八届"挑战杯"全国大学生课外学术科技作品竞赛校一等奖</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Campus Section -->
+<section class="section campus" id="campus">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Campus Experience</div>
+      <h2 class="section-title">校园<span>经历</span></h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="campus-grid">
+
+      <div class="campus-card reveal">
+        <div class="campus-icon">&#127942;</div>
+        <div class="campus-title">中国国际进口博览会</div>
+        <div class="campus-role">小叶子体验官 / 小花梨记者团团长</div>
+        <div class="campus-desc">
+          连续三届服务进博会，从远程报道到切身参与。第五届担任记者团团长，辅助小叶子体验官做好服务与报道，制作网络文化产品总点击突破100万人次。第六届作为小叶子体验官，深度访谈多位华理志愿者，完成近10篇推送、两条视频填词，记录"小叶子"的风采。
+        </div>
+        <div class="campus-stats">
+          <div class="campus-stat">
+            <div class="campus-stat-value">3届</div>
+            <div class="campus-stat-label">连续服务</div>
+          </div>
+          <div class="campus-stat">
+            <div class="campus-stat-value">100万+</div>
+            <div class="campus-stat-label">点击量</div>
+          </div>
+          <div class="campus-stat">
+            <div class="campus-stat-value">10篇</div>
+            <div class="campus-stat-label">推送报道</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="campus-card reveal">
+        <div class="campus-icon">&#127793;</div>
+        <div class="campus-title">普法志愿服务</div>
+        <div class="campus-role">普法宣讲团成员</div>
+        <div class="campus-desc">
+          从华理校园到奉贤泰日学校，再到祖国边陲的内蒙古克一河。对口商学院开展校园法律问题解答，从个案大额费用追回到校园诈骗宣讲。跨越大半个中国，面向200余名学生开展半个月普法课堂，以校园霸凌等未成年人法律问题为切入，讲述生动案例。
+        </div>
+        <div class="campus-stats">
+          <div class="campus-stat">
+            <div class="campus-stat-value">200+</div>
+            <div class="campus-stat-label">受益学生</div>
+          </div>
+          <div class="campus-stat">
+            <div class="campus-stat-value">45小时</div>
+            <div class="campus-stat-label">绿皮火车</div>
+          </div>
+          <div class="campus-stat">
+            <div class="campus-stat-value">半个月</div>
+            <div class="campus-stat-label">普法课堂</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="campus-card reveal">
+        <div class="campus-icon">&#128221;</div>
+        <div class="campus-title">疫情防控志愿服务</div>
+        <div class="campus-role">班级学习委员 / 志愿者</div>
+        <div class="campus-desc">
+          搭建直播平台辅助开展50余场课程直播，汇总收集近700份作业文档。作为志愿者搬运物资、维护核酸检测秩序。作为小花梨骨干，讲述"平凡英雄"的故事，用笔见证华理人的坚守与学校的温暖。
+        </div>
+        <div class="campus-stats">
+          <div class="campus-stat">
+            <div class="campus-stat-value">50+</div>
+            <div class="campus-stat-label">课程直播</div>
+          </div>
+          <div class="campus-stat">
+            <div class="campus-stat-value">700份</div>
+            <div class="campus-stat-label">作业文档</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="campus-card reveal">
+        <div class="campus-icon">&#127760;</div>
+        <div class="campus-title">HSYLC哈佛峰会</div>
+        <div class="campus-role">志愿者</div>
+        <div class="campus-desc">
+          参与哈佛中美学生领袖峰会志愿服务，协助组织学术活动与文化交流，拓展国际视野，提升跨文化沟通能力。
+        </div>
+      </div>
+
+      <div class="campus-card reveal">
+        <div class="campus-icon">&#127942;</div>
+        <div class="campus-title">CTB全球青年研究创新论坛</div>
+        <div class="campus-role">答辩主持人志愿者</div>
+        <div class="campus-desc">
+          2026年3月，作为答辩主持人志愿者，统筹40组初中生答辩现场，负责控场与全场工作流管理，组织后期活动，锻炼大型活动统筹能力。
+        </div>
+        <div class="campus-stats">
+          <div class="campus-stat">
+            <div class="campus-stat-value">40组</div>
+            <div class="campus-stat-label">答辩统筹</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="campus-card reveal">
+        <div class="campus-icon">&#9997;</div>
+        <div class="campus-title">法科生讲好法治故事赛事</div>
+        <div class="campus-role">学院学生骨干 / 志愿者</div>
+        <div class="campus-desc">
+          参与法科生讲好法治故事赛事服务，经过大量前期准备，帮助法科生为法治中国建设做出贡献。发布每周志愿招募信息，为同学们了解志愿服务动向提供平台。
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Honors Section -->
+<section class="section honors" id="honors">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Personal Honors</div>
+      <h2 class="section-title">个人<span>荣誉</span></h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="honors-list">
+      
+      <div class="honor-item reveal">
+        <div class="honor-icon">&#127941;</div>
+        <div class="honor-content">
+          <div class="honor-title">上海市优秀毕业生</div>
+          <div class="honor-detail">华东理工大学 | 特等奖学金（1次，前3%）、一等优秀奖学金（3次）</div>
+        </div>
+        <span class="honor-year">2025</span>
+      </div>
+
+      <div class="honor-item reveal">
+        <div class="honor-icon">&#127942;</div>
+        <div class="honor-content">
+          <div class="honor-title">校优秀团员、校优秀学生</div>
+          <div class="honor-detail">多次获得校级荣誉称号</div>
+        </div>
+        <span class="honor-year">2021-2025</span>
+      </div>
+
+      <div class="honor-item reveal">
+        <div class="honor-icon">&#127891;</div>
+        <div class="honor-content">
+          <div class="honor-title">法考A证</div>
+          <div class="honor-detail">国家统一法律职业资格考试</div>
+        </div>
+        <span class="honor-year">2024</span>
+      </div>
+
+      <div class="honor-item reveal">
+        <div class="honor-icon">&#127757;</div>
+        <div class="honor-content">
+          <div class="honor-title">进博会优秀志愿者</div>
+          <div class="honor-detail">连续三届服务中国国际进口博览会</div>
+        </div>
+        <span class="honor-year">2022-2024</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Skills Section -->
+<section class="section skills" id="skills">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Skills & Hobbies</div>
+      <h2 class="section-title">技能<span>爱好</span></h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="skills-grid">
+
+      <div class="skill-card reveal" onclick="showSkillDetail('法律研究')">
+        <div class="skill-icon">&#9878;</div>
+        <div class="skill-name">法律研究</div>
+        <div class="skill-desc">商事争议解决、法律检索、案例分析、文书起草</div>
+        <div class="skill-hint">点击查看作品 →</div>
+      </div>
+
+      <div class="skill-card reveal" onclick="showSkillDetail('新媒体运营')">
+        <div class="skill-icon">&#128187;</div>
+        <div class="skill-name">新媒体运营</div>
+        <div class="skill-desc">公众号运营、视频制作、新闻写作、内容策划</div>
+        <div class="skill-hint">点击查看作品 →</div>
+      </div>
+
+      <div class="skill-card reveal" onclick="showSkillDetail('公共演讲')">
+        <div class="skill-icon">&#127908;</div>
+        <div class="skill-name">公共演讲</div>
+        <div class="skill-desc">辩论、模拟法庭、赛事主持、普法宣讲</div>
+        <div class="skill-hint">点击查看视频 →</div>
+      </div>
+
+      <div class="skill-card reveal" onclick="showSkillDetail('摄影')">
+        <div class="skill-icon">&#128247;</div>
+        <div class="skill-name">摄影</div>
+        <div class="skill-desc">活动记录、人像摄影、风景摄影、后期处理</div>
+        <div class="skill-hint">点击查看作品 →</div>
+      </div>
+
+      <div class="skill-card reveal" onclick="showSkillDetail('视频剪辑')">
+        <div class="skill-icon">&#127909;</div>
+        <div class="skill-name">视频剪辑</div>
+        <div class="skill-desc">短视频制作、Vlog剪辑、视频填词、后期特效</div>
+        <div class="skill-hint">点击查看作品 →</div>
+      </div>
+
+      <div class="skill-card reveal" onclick="showSkillDetail('志愿服务')">
+        <div class="skill-icon">&#129505;</div>
+        <div class="skill-name">志愿服务</div>
+        <div class="skill-desc">普法教育、大型赛会、疫情防控、活动组织</div>
+        <div class="skill-hint">点击查看记录 →</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="section contact" id="contact">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Contact</div>
+      <h2 class="section-title">联系<span>我</span></h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="contact-content">
+      <p class="contact-text reveal">
+        期待与您交流法律、志愿服务，或任何有趣的话题。
+      </p>
+      <div class="contact-links reveal">
+        <a href="mailto:chen13176536118@163.com" class="contact-link">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <span>chen13176536118@163.com</span>
+        </a>
+        <a href="#" class="contact-link">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span>13176536118</span>
+        </a>
+      </div>
+      <div class="contact-info reveal">
+        <div class="contact-info-item">
+          <span>&#128205;</span>
+          <span>上海 / 北京</span>
+        </div>
+        <div class="contact-info-item">
+          <span>&#127891;</span>
+          <span>中央民族大学 法律硕士</span>
+        </div>
+        <div class="contact-info-item">
+          <span>&#128100;</span>
+          <span>中共党员</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <p class="footer-text">&copy; 2025 陈姗姗 Shanelle Chen. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- JavaScript -->
+<script>
+// Mobile Navigation Toggle
+const mobileToggle = document.getElementById('mobileToggle');
+const navLinks = document.getElementById('navLinks');
+
+mobileToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+
+// Close mobile menu when clicking a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+  });
+});
+
+// Active Navigation Link on Scroll
+const sections = document.querySelectorAll('section[id]');
+const navItems = document.querySelectorAll('.nav-links a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    if (scrollY >= sectionTop - 200) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  navItems.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) {
+      link.classList.add('active');
+    }
+  });
+});
+
+// Scroll Reveal Animation
+const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+
+const revealOnScroll = () => {
+  revealElements.forEach(element => {
+    const elementTop = element.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+    
+    if (elementTop < windowHeight - 100) {
+      element.classList.add('active');
+    }
+  });
+};
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+
+// Skill Card Click Handler
+function showSkillDetail(skillName) {
+  alert('「' + skillName + '」板块正在建设中...\n\n请稍后提供相关视频/照片，我将为您完善此部分！');
+}
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+
+// Navbar background on scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+  } else {
+    navbar.style.background = 'rgba(10, 10, 10, 0.85)';
+  }
+});
+</script>
+
 </body>
 </html>
