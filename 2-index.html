@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陈姗姗 Shanelle - 个人简历</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding: 20px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .home-page {
+            text-align: center;
+            color: white;
+        }
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 24px;
+            padding: 50px 40px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            color: #333;
+        }
+
+        .avatar-container {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: white;
+            border: 5px solid #f0f2ff;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .name-section h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .name-section .english-name {
+            font-size: 18px;
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .title-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .contact-item i {
+            color: #667eea;
+            width: 20px;
+        }
+
+        .nav-menu {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .nav-btn {
+            background: #f8f9fa;
+            border: 2px solid transparent;
+            border-radius: 16px;
+            padding: 20px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .nav-btn:hover {
+            background: white;
+            border-color: #667eea;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+        }
+
+        .nav-btn i {
+            font-size: 28px;
+            color: #667eea;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .nav-btn span {
+            font-size: 14px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .content-page {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .page-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .page-header h2 {
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .page-header h2 i {
+            font-size: 24px;
+        }
+
+        .back-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .content-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+        }
+
+        .edu-item {
+            display: flex;
+            gap: 20px;
+            padding: 25px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .edu-item:last-child {
+            border-bottom: none;
+        }
+
+        .edu-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .edu-content h3 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .edu-content .school-tag {
+            display: inline-block;
+            background: #f0f2ff;
+            color: #667eea;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .edu-content p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .exp-item {
+            padding: 25px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .exp-item:last-child {
+            border-bottom: none;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .exp-title-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .exp-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        .exp-title-section h3 {
+            font-size: 17px;
+            color: #333;
+        }
+
+        .exp-title-section .company {
+            color: #667eea;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .exp-date {
+            color: #888;
+            font-size: 13px;
+            background: #f8f9fa;
+            padding: 5px 12px;
+            border-radius: 15px;
+        }
+
+        .exp-desc {
+            padding-left: 57px;
+        }
+
+        .exp-desc li {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 8px;
+            list-style: none;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .exp-desc li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .award-item {
+            display: flex;
+            gap: 15px;
+            padding: 20px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .award-item:last-child {
+            border-bottom: none;
+        }
+
+        .award-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .award-content h3 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .award-content .award-level {
+            color: #f5576c;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .award-content p {
+            color: #666;
+            font-size: 13px;
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+
+        .campus-item {
+            padding: 20px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .campus-item:last-child {
+            border-bottom: none;
+        }
+
+        .campus-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .campus-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .campus-title i {
+            color: #667eea;
+            font-size: 18px;
+        }
+
+        .campus-title h3 {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .campus-date {
+            color: #888;
+            font-size: 12px;
+        }
+
+        .campus-desc li {
+            color: #555;
+            font-size: 13px;
+            line-height: 1.7;
+            margin-bottom: 6px;
+            list-style: none;
+            padding-left: 28px;
+            position: relative;
+        }
+
+        .campus-desc li::before {
+            content: "•";
+            position: absolute;
+            left: 15px;
+            color: #667eea;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .skill-item:hover {
+            background: #f0f2ff;
+            transform: translateX(5px);
+        }
+
+        .skill-item i {
+            font-size: 22px;
+            color: #667eea;
+            width: 30px;
+            text-align: center;
+        }
+
+        .skill-item span {
+            font-size: 14px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .hobby-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #f0f2ff 100%);
+            border-radius: 15px;
+            transition: all 0.3s;
+        }
+
+        .hobby-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.15);
+        }
+
+        .hobby-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .hobby-info h4 {
+            font-size: 15px;
+            color: #333;
+            margin-bottom: 3px;
+        }
+
+        .hobby-info p {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .honors-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px;
+        }
+
+        .honor-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .honor-item i {
+            color: #f5576c;
+            font-size: 18px;
+        }
+
+        .honor-item span {
+            font-size: 14px;
+            color: #333;
+        }
+
+        @media (max-width: 600px) {
+            .profile-card {
+                padding: 30px 20px;
+            }
+
+            .nav-menu {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header h2 {
+                font-size: 20px;
+            }
+
+            .content-card {
+                padding: 20px;
+            }
+
+            .exp-header {
+                flex-direction: column;
+            }
+
+            .exp-desc {
+                padding-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page home-page active" id="home">
+        <div class="profile-card">
+            <div class="avatar-container">
+                <div class="avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+            
+            <div class="name-section">
+                <h1>陈姗姗</h1>
+                <div class="english-name">Shanelle Chen</div>
+                <div class="title-badge">2027届法律硕士 | 中共党员</div>
+            </div>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>chen13176536118@163.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>131-7653-6118</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-birthday-cake"></i>
+                    <span>2003年1月</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>法考证 | 英语六级</span>
+                </div>
+            </div>
+
+            <div class="nav-menu">
+                <div class="nav-btn" onclick="showPage('education')">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>教育背景</span>
+                </div>
+                <div class="nav-btn" onclick="showPage('internship')">
+                    <i class="fas fa-briefcase"></i>
+                    <span>实习经历</span>
+                </div>
+                <div class="nav-btn" onclick="showPage('awards')">
+                    <i class="fas fa-trophy"></i>
+                    <span>竞赛获奖</span>
+                </div>
+                <div class="nav-btn" onclick="showPage('campus')">
+                    <i class="fas fa-university"></i>
+                    <span>校园经历</span>
+                </div>
+                <div class="nav-btn" onclick="showPage('honors')">
+                    <i class="fas fa-medal"></i>
+                    <span>个人荣誉</span>
+                </div>
+                <div class="nav-btn" onclick="showPage('skills')">
+                    <i class="fas fa-star"></i>
+                    <span>技能爱好</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page content-page" id="education">
+        <div class="page-header">
+            <h2><i class="fas fa-graduation-cap"></i> 教育背景</h2>
+            <button class="back-btn" onclick="showPage('home')">
+                <i class="fas fa-arrow-left"></i> 返回首页
+            </button>
+        </div>
+        <div class="content-card">
+            <div class="edu-item">
+                <div class="edu-icon">
+                    <i class="fas fa-university"></i>
+                </div>
+                <div class="edu-content">
+                    <h3>中央民族大学</h3>
+                    <span class="school-tag">985高校</span>
+                    <p><strong>法律（法学）硕士</strong> | 保研第二名 | 特等奖学金前5%</p>
+                    <p style="color: #888; margin-top: 5px;">2025.09 - 2027.06</p>
+                </div>
+            </div>
+            <div class="edu-item">
+                <div class="edu-icon">
+                    <i class="fas fa-school"></i>
+                </div>
+                <div class="edu-content">
+                    <h3>华东理工大学</h3>
+                    <span class="school-tag">211高校</span>
+                    <p><strong>法学学士</strong> | 专业排名前3% (3/111)</p>
+                    <p style="color: #888; margin-top: 5px;">2021.09 - 2025.06</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page content-page" id="internship">
+        <div class="page-header">
+            <h2><i class="fas fa-briefcase"></i> 实习经历</h2>
+            <button class="back-btn" onclick="showPage('home')">
+                <i class="fas fa-arrow-left"></i> 返回首页
+            </button>
+        </div>
+        <div class="content-card">
+            <div class="exp-item">
+                <div class="exp-header">
+                    <div class="exp-title-section">
+                        <div class="exp-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <div>
+                            <h3>商事争议解决实习生</h3>
+                            <div class="company">北京安杰世泽律师事务所</div>
+                        </div>
+                    </div>
+                    <span class="exp-date">2024.11 - 2025.04</span>
+                </div>
+                <ul class="exp-desc">
+                    <li><strong>案件跟进管理：</strong>独立起草答辩状等法律文书30+份，参与大额商事诉讼案件，熟悉法律文书撰写及案件起诉环节</li>
+                    <li><strong>工具赋能：</strong>熟练使用ChatGPT、Claude工具辅助完成合同初步审核与中英文互译，极大提升效率；具备Vibe coding基础经验，正在尝试编写程序自动化处理批量检索与分类工作</li>
+                    <li><strong>多线程协同：</strong>同时跟进2个以上的常法咨询项目，独立负责合同初审、法律检索与文书管理，能高效完成工作</li>
+                </ul>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-header">
+                    <div class="exp-title-section">
+                        <div class="exp-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <div>
+                            <h3>法律实习生</h3>
+                            <div class="company">上海宇钧律师事务所</div>
+                        </div>
+                    </div>
+                    <span class="exp-date">2024.11 - 2025.04</span>
+                </div>
+                <ul class="exp-desc">
+                    <li><strong>项目统筹：</strong>协助完成5场律协讲座及40名本科生课程设计，负责资料收集、PPT制作及内容汇总，锻炼项目统筹能力</li>
+                    <li><strong>案件管理：</strong>跟进18起诉讼案件，独立起草起诉状、证据目录等法律文书，负责接待当事人，熟悉案件起诉等环节</li>
+                    <li><strong>法律项目实践：</strong>参与"烁光好律师"网站及小程序的落地，负责该网站推广的全矩阵搭建，产出200+视频（20+爆款），客户吸引ROI达10:1</li>
+                </ul>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-header">
+                    <div class="exp-title-section">
+                        <div class="exp-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <div>
+                            <h3>新媒体实习生</h3>
+                            <div class="company">人民网</div>
+                        </div>
+                    </div>
+                    <span class="exp-date">2023.08 - 2023.11</span>
+                </div>
+                <ul class="exp-desc">
+                    <li><strong>新媒体运营：</strong>运营120w+粉丝的公众号，制作推送140+篇，单篇推送最高浏览量突破100w</li>
+                    <li><strong>矩阵搭建：</strong>参与搭建"食品安全"科普矩阵，制作4篇长图海报，提升了设计能力，向上沟通能力得到锻炼</li>
+                    <li><strong>数据分析：</strong>定期对推送数据（阅读量、互动率）进行统计分析，为内容策划优化提供依据</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="page content-page" id="awards">
+        <div class="page-header">
+            <h2><i class="fas fa-trophy"></i> 竞赛获奖</h2>
+            <button class="back-btn" onclick="showPage('home')">
+                <i class="fas fa-arrow-left"></i> 返回首页
+            </button>
+        </div>
+        <div class="content-card">
+            <div class="award-item">
+                <div class="award-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="award-content">
+                    <h3>第十二届中国WTO模拟法庭竞赛</h3>
+                    <div class="award-level">全国二等奖、被告书状三等奖</div>
+                    <p>作为负责人，带领7人团队撰写、打磨50页英文书状，进行国际法法律检索与案例研究，统筹团队分工与进度。</p>
+                    <p style="color: #888; margin-top: 5px;">2023.09 - 2023.11</p>
+                </div>
+            </div>
+
+            <div class="award-item">
+                <div class="award-icon">
+                    <i class="fas fa-balance-scale-right"></i>
+                </div>
+                <div class="award-content">
+                    <h3>第十一届"法援杯"案例分析大赛</h3>
+                    <div class="award-level">全国二等奖</div>
+                    <p>调动知识产权法等法律知识现场询问当事人，1h快速完成法律意见书出具及展示，获得评委一致好评。</p>
+                    <p style="color: #888; margin-top: 5px;">2023.09 - 2023.11</p>
+                </div>
+            </div>
+
+            <div class="award-item">
+                <div class="award-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="award-content">
+                    <h3>第九届中国国际"互联网+"大学生创新创业大赛</h3>
+                    <div class="award-level">上海赛区银奖</div>
+                    <p>立足生成式人工智能，为AI绘画软件进行版权保护的研究及方案设计，提升了对新兴行业的法学认识与商业敏感度。</p>
+                    <p style="color: #888; margin-top: 5px;">2023.06 - 2023.09</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                <p style="color: #666; font-size: 14px;"><strong>其他获奖：</strong>第一届"中凯杯"上海市法科生法律职业技能大赛一等奖、最佳口才奖 | 第九届互联网+北京赛区三等奖</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page content-page" id="campus">
+        <div class="page-header">
+            <h2><i class="fas fa-university"></i> 校园经历</h2>
+            <button class="back-btn" onclick="showPage('home')">
+                <i class="fas fa-arrow-left"></i> 返回首页
+            </button>
+        </div>
+        <div class="content-card">
+            <div class="campus-item">
+                <div class="campus-header">
+                    <div class="campus-title">
+                        <i class="fas fa-bullhorn"></i>
+                        <h3>记者团学生负责人 | 校团委宣传部（小花梨新媒体工作室）</h3>
+                    </div>
+                    <span class="campus-date">2023.04 - 2024.04</span>
+                </div>
+                <ul class="campus-desc">
+                    <li><strong>团队管理与统筹：</strong>带领跨部门90人团队，统筹七十周年校庆、第六届进博会等大型活动宣传工作，制定分工、协调资源、把控进度</li>
+                    <li><strong>宣传成果：</strong>参与推送370+，总浏览量突破600万，多篇推送被光明日报、央视新闻等央媒报道、转载</li>
+                    <li><strong>荣誉：</strong>在任期间，公众号斩获上海市共青团十大微信公众号，排名长期位于全国前十、上海前三，多次获国家级、市级奖项</li>
+                </ul>
+            </div>
+
+            <div class="campus-item">
+                <div class="campus-header">
+                    <div class="campus-title">
+                        <i class="fas fa-book-reader"></i>
+                        <h3>校学生法治宣传员 | 校党委学生工作部</h3>
+                    </div>
+                    <span class="campus-date">2023.04 - 2024.04</span>
+                </div>
+                <ul class="campus-desc">
+                    <li><strong>法律宣讲：</strong>针对真实法律问题，面向大学生开展宣讲，整理案例资料，撰写普法材料，锻炼了知识的转化能力</li>
+                    <li><strong>支教实践：</strong>赴内蒙古克一河（距北京约2000公里）支教20天，设计覆盖全年级小学生的普法课程，反响良好</li>
+                </ul>
+            </div>
+
+            <div class="campus-item">
+                <div class="campus-header">
+                    <div class="campus-title">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <h3>助教 | 哈佛中美学生领袖峰会（HSYLC）</h3>
+                    </div>
+                    <span class="campus-date">2022.08 - 2023.08</span>
+                </div>
+                <ul class="campus-desc">
+                    <li>协助哈佛讲师设计模拟法庭课程（全英）</li>
+                    <li>陪伴30名高中生7天，组织每日活动与大型汇演排演，建立深度信任关系</li>
+                </ul>
+            </div>
+
+            <div class="campus-item">
+                <div class="campus-header">
+                    <div class="campus-title">
+                        <i class="fas fa-flask"></i>
+                        <h3>国家级大学生创新创业项目《第三者干扰婚姻关系的民事责任问题研究》 | 项目负责人</h3>
+                    </div>
+                    <span class="campus-date">2022.11 - 2024.06</span>
+                </div>
+                <ul class="campus-desc">
+                    <li>带领团队就社会热点"第三者责任"确定选题，统筹项目的整体进程，把控项目研究方向</li>
+                    <li>承担主要的沟通交涉工作，成功与多家法院、律所、当事人对接，真实了解当事人诉求及各地法官的裁判方向</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="page content-page" id="honors">
+        <div class="page-header">
+            <h2><i class="fas fa-medal"></i> 个人荣誉</h2>
+            <button class="back-btn" onclick="showPage('home')">
+                <i class="fas fa-arrow-left"></i> 返回首页
+            </button>
+        </div>
+        <div class="content-card">
+            <div class="honors-list">
+                <div class="honor-item">
+                    <i class="fas fa-crown"></i>
+                    <span>国家奖学金</span>
+                </div>
+                <div class="honor-item">
+                    <i class="fas fa-award"></i>
+                    <span>上海市优秀毕业生</span>
+                </div>
+                <div class="honor-item">
+                    <i class="fas fa-user-tie"></i>
+                    <span>校优秀学生干部</span>
+                </div>
+                <div class="honor-item">
+                    <i class="fas fa-star"></i>
+                    <span>校优秀学生</span>
+                </div>
+                <div class="honor-item">
+                    <i class="fas fa-hands-helping"></i>
+                    <span>校十佳志愿者（全校共10人）</span>
+                </div>
+                <div class="honor-item">
+                    <i class="fas fa-trophy"></i>
+                    <span>特等奖学金（1次）、一等优秀奖学金（多次）</span>
+                </div>
+                <div class="honor-item">
+                    <i class="fas fa-flag"></i>
+                    <span>校优秀共青团干部（多次）</span>
+                </div>
+                <div class="honor-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>社会工作奖A等（多次）</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page content-page" id="skills">
+        <div class="page-header">
+            <h2><i class="fas fa-star"></i> 专业技能 & 爱好特长</h2>
+            <button class="back-btn" onclick="showPage('home')">
+                <i class="fas fa-arrow-left"></i> 返回首页
+            </button>
+        </div>
+        
+        <div class="content-card" style="margin-bottom: 20px;">
+            <h3 style="margin-bottom: 20px; color: #333;"><i class="fas fa-tools" style="color: #667eea; margin-right: 10px;"></i>专业技能</h3>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <i class="fas fa-file-alt"></i>
+                    <span>法律文书撰写</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-search"></i>
+                    <span>法律检索</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-file-contract"></i>
+                    <span>合同审核</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-file-contract"></i>
+                    <span>知识产权法</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-robot"></i>
+                    <span>AI工具应用</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-share-alt"></i>
+                    <span>新媒体运营</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>数据分析</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-tasks"></i>
+                    <span>项目管理</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-users"></i>
+                    <span>团队协作</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3 style="margin-bottom: 20px; color: #333;"><i class="fas fa-heart" style="color: #f5576c; margin-right: 10px;"></i>爱好特长</h3>
+            <div class="hobbies-grid">
+                <div class="hobby-item">
+                    <div class="hobby-icon">🎹</div>
+                    <div class="hobby-info">
+                        <h4>电子琴</h4>
+                        <p>十级水平</p>
+                    </div>
+                </div>
+                <div class="hobby-item">
+                    <div class="hobby-icon">📷</div>
+                    <div class="hobby-info">
+                        <h4>摄影</h4>
+                        <p>摄影爱好者</p>
+                    </div>
+                </div>
+                <div class="hobby-item">
+                    <div class="hobby-icon">🤿</div>
+                    <div class="hobby-info">
+                        <h4>水肺潜水</h4>
+                        <p>AOW认证潜水员</p>
+                    </div>
+                </div>
+                <div class="hobby-item">
+                    <div class="hobby-icon">🏊</div>
+                    <div class="hobby-info">
+                        <h4>自由潜</h4>
+                        <p>AIDA一星认证</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
